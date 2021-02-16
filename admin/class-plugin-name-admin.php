@@ -100,4 +100,25 @@ class Plugin_Name_Admin {
 
 	}
 
+	/**
+	 * Add our custom menu
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function my_admin_menu() {
+		add_menu_page('New Plugin Settings', 'WP10OrLess Settings', 'manage_options', 'plugin-name/mainsettings.php', array($this, 'myplugin_admin_page'), 'dashicons-tickets', 250);
+		add_submenu_page('plugin-name/mainsettings.php', 'My Sub Level Menu Example', 'Sub Level Menu', 'manage_options', 'plugin-name/importer.php', array($this, 'myplugin_admin_sub_page'));
+	}
+
+	public function myplugin_admin_page() {
+		// return views
+		require_once 'partials/plugin-name-admin-display.php';
+	}
+
+	public function myplugin_admin_sub_page() {
+		// return subpage views
+		require_once 'partials/submenu-page.php';
+	}
+
 }
